@@ -1,0 +1,14 @@
+if Rails.env.development?
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => "app20785710@heroku.com",
+    :password       => "yyk6piczl",
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+end
+
+#http://stackoverflow.com/questions/16505604/nomethoderror-undefined-method-email-for-nilnilclass-cant-send-email-with
