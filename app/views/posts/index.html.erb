@@ -1,18 +1,21 @@
-<<<<<<< HEAD
 <h1>All Posts</h1>
-<% @post.each do |post| %>
-	<div class="media">
-		<div class="media-body">
-			<h4 class="media-heading">
-				<%= link_to post.title, post %>
-			</h4>
-			<small>
-				submitted <%= time_ago_in_world(post.created_at) %> ago by <%= user.name %></br>
-				<%= post.comments.count %> Comments
-		</div>
-	</div>
+
+<% if can? :create, Post %>
+  <%= link_to "New Post", new_post_path, class: 'btn btn-primary btn-mini' %>
 <% end %>
-=======
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
->>>>>>> Ben-Branch
+
+
+
+<% @post.each do |post| %>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= link_to post.title, post %>
+      </h4>
+      <small>
+        submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br/>
+        <%= post.comments.count %> Comments
+      </small>
+    </div>
+  </div>
+<% end %>
