@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index
+<<<<<<< HEAD
   	@post = Post.all
   end
 
@@ -36,5 +37,17 @@ class PostsController < ApplicationController
       flash[:error] = "These was and error saving the post. Please try again."
       render :edit
     end
+=======
+  	@posts = Post.all
+  end
+
+  def show
+  end
+
+  def new
+  end
+
+  def edit
+>>>>>>> Ben-Branch
   end
 end
