@@ -13,7 +13,7 @@ class Ability
     end
 
     #Moderators can delete any post
-    if user.role? :modertor
+    if user.role? :moderator
         can :destroy, Post
         can :destroy, Comment
     end
