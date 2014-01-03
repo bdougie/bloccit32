@@ -9,7 +9,7 @@ class TopicsController < ApplicationController
   end
   def show
     @topic = Topic.find(params[:id])
-    @posts = @topic.post
+    @posts = @topic.posts
   end
 
   def edit
@@ -20,8 +20,7 @@ class TopicsController < ApplicationController
   def create
   	@topic = Topic.new(params[:topic])
     authorize! :create, @topic, message: "You need to be an admin to do that."
-    if @topic.save
-  	if @topic.save
+    if @topic.save  	
   		redirect_to @topic, notice: "Topic was saved successfully."
   	else
   		flash[:error] = "Error creating topic. Please try again."
@@ -40,4 +39,4 @@ class TopicsController < ApplicationController
 		end
 	end
 end
-end
+
