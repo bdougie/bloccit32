@@ -14,6 +14,7 @@
 				</div>
 			</div>
 		<% end %>
+		<%= will_paginate @topic %>
 	</div>
 	<div class="span4">
 		<% if can? :create, Topic %>
@@ -22,4 +23,4 @@
 	</div>
 </div>
 
-#		<%= will_paginate @topic %>
+
