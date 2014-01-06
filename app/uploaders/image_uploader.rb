@@ -4,11 +4,12 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
+  include Sprockets::Helpers::RailsHelper
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -27,16 +28,22 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
-    process :resize_to_fill => [300, 300]
+  process :resize_to_fill => [300, 300]
 
-    version :thumb do
-      process :resize_to_fill => [50, 50]
-    end
-    
+  version :tiny do
+    process :resize_to_fill => [20, 20]
+  end
+
+  version :small do
+    process :resize_to_fill => [30, 30]
+  end
+
   # def scale(width, height)
   #   # do something
   # end
-
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
   # Create different versions of your uploaded files:
   # version :thumb do
   #   process :scale => [50, 50]

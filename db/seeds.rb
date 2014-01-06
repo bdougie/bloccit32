@@ -9,7 +9,7 @@ topics = []
   )
 end  
 
-rand(4..10).times do
+rand(9..15).times do
   password = Faker::Lorem.characters(10)
   u = User.new(
     name: Faker::Name.name, 
