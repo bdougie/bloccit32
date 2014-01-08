@@ -4,7 +4,7 @@ Bloccit32::Application.routes.draw do
 
   resources :topics do
   	resources :posts, except: [:index] do # I missed adding the do here
-	    resources :comments, only: [:create]
+	    resources :comments, only: [:create, :destroy]
 	  end
 	end
 #uninitialized error constant CommentsHelper
