@@ -5,11 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar, :avatar_cache
   # attr_accessible :title, :body
   has_many :posts
   has_many :comments
   before_create :set_member
+
   mount_uploader :avatar, AvatarUploader 
 
 
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
 	  role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
 	end 
 
-  private
+private
 
   def set_member
     self.role = 'member'

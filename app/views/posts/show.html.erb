@@ -3,22 +3,30 @@
   <div class="row">
     <div class="span8">
       <p><%= image_tag(@post.image.url) %><p>
-        <p><%= markdown @post.body %></p>
+      <p><%= markdown @post.body %></p>
+
+      <h2><%= @comments.count %> Comments</h2>
+
+      <%= render partial: 'comments/comments' %>
+
+      <% if can? :create, Comment %>
+        <hr/>
+        <h4>New Comment</h4>
+        <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+        <% end %>
+
     	<small>
         <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
         submitted <%= time_ago_in_words(@post.created_at) %> ago by 
         <%= @post.user.name %></br>
-        <%= @post.comments.count %>
-        <%= control_group_tag(post.errors[:body]) do %>
-        <%= f.label :body, class: 'control-label' %>
         
       </small> 
       
     </div>
     <div class="span4">
-  <% if can? :edit, @post %>
-  <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-mini' %>
-  <% end %>
+      <% if can? :edit, @post %>
+      <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-mini' %>
+      <% end %>
   	</div>
   </div>
 
