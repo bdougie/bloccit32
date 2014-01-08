@@ -1,2 +1,2 @@
-module CommentsControllerHelper
+module CommentsHelper
 end
