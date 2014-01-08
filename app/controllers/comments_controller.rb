@@ -19,12 +19,7 @@ class CommentsController < ApplicationController
 
    def create
     @comment = Comment.new(params[:post])
-    if @comment.save
-      flash[:notice] = "Comment was saved successfully."
-      redirect_to @post
-    else
-      flash[:error] = "Error creating comment. Please try again."
-      render :new
-    end
+    @post.comment = comment
+   end
 
 end
