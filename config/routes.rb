@@ -1,6 +1,6 @@
 Bloccit32::Application.routes.draw do
 
-  devise_for :users
+devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :topics do
   	resources :posts, except: [:index] do # I missed adding the do here

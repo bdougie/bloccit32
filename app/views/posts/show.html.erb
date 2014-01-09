@@ -7,20 +7,20 @@
 
       <h2><%= @comments.count %> Comments</h2>
 
-      <%= render partial: 'comments/comments' %>
+      <%= render partial: 'comments/comment', collection: @comments, locals: {topic: @topic, post: @post} %>
 
       <% if can? :create, Comment %>
         <hr/>
-        <h4>New Comment</h4>
-        <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
-        <% end %>
 
     	<small>
         <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
         submitted <%= time_ago_in_words(@post.created_at) %> ago by 
         <%= @post.user.name %></br>
-        
+    
+        <% end %>
       </small> 
+      <h4>New Comment</h4>
+      <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
       
     </div>
     <div class="span4">
