@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   default_scope order('created_at DESC')
-
+  scope :visible_to, lambda { |user| user ? scoped : joins(:topic).where('topics.public' => true)}
 
   def up_votes
     self.votes.where(value: 1).count
