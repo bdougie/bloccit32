@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 FactoryGirl.define do 
 	factory :post do
 		title "First Post"
@@ -7,19 +9,5 @@ FactoryGirl.define do
 	end	
 end
 
-FactoryGirl.define do 
-	factory :topic do
-		name "Test Topic"
-	end
-end
 
-FactoryGirl.define do 
-	factory :user do
-		name "Douglas Adams"
-		email "douglas@example.com"
-		password "helloworld"
-		password_confirmation "helloworld"
-		confirmed_at Time.now
-	end
-end
 
