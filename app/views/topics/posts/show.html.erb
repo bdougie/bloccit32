@@ -21,7 +21,9 @@
         <br/>
           <div class="js-new-comment hide">
             <h4>New Comment</h4>
+            <div>
             <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+            </div>
           </div>
       <% end %>
       
