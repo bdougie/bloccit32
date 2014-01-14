@@ -3,23 +3,27 @@
 <div class="row">
   <div class="span8">
       
-      <p><%= image_tag(@post.image.url) %><p>
+      <p><%= image_tag(@post.image.url) if @post.image? %><p>
        <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
       <p><%= markdown @post.body %></p>
       <h2><%= @comments.count %> Comments</h2>
         <%= render partial: 'comments/comment', collection: @comments %>
 
       <% if can? :create, Comment %> 
-    	<small>
-        <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
-        submitted <%= time_ago_in_words(@post.created_at) %> ago by 
-        <%= @post.user.name %></br>
-      </small> 
+        <hr/>
+      	<small>
+          <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
+          submitted <%= time_ago_in_words(@post.created_at) %> ago by 
+          <%= @post.user.name %></br>
+        </small> 
+
+        <a href="#" class="js-show-hide" data-selector="js-new-comment">Add Comment</a>        
+        <br/>
+          <div class="js-new-comment hide">
+            <h4>New Comment</h4>
+            <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+          </div>
       <% end %>
-
-
-      <h4>New Comment</h4>
-      <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
       
   </div>
       <div class="span4">
