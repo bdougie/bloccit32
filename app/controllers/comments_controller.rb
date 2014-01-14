@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  respond_to :html, :js
 	def create
     @topic = Topic.find(params[:topic_id]) # added after I saw the answer
     @post = @topic.posts.find(params[:post_id]) # added after I saw the answer
@@ -31,11 +31,14 @@ class CommentsController < ApplicationController
       redirect_to [@topic, @post]
     else
       flash[:error] = "Comment couldn't be deleted. Try again."
-      redirect_to [@topic, @post]
     end
+
+    respond_with(@comment) do |f| 
+      f.html { redirect_to [@topic, @post] }
+    end  
   end
   
- end
+end
 
 
    
