@@ -8,12 +8,12 @@ Posted on <a href ="http://bloccit32.heroku.com">brian-bloccit.heroku.com</a>
 
 Skills Learned:
 
-- [x] Rspec
-- [x] Facebook API
-- [x] AJAX
-- [x] Jquery
-- [x] Eager Loading
-- [x] ...and more
+- [ x ] Rspec
+- [ x ] Facebook API
+- [ x ] AJAX
+- [ x ] Jquery
+- [ x ] Eager Loading
+- [ x ] ...and more
 
 ## Setup
 

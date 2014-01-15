@@ -6,8 +6,12 @@
       <p><%= image_tag(@post.image.url) if @post.image? %><p>
        <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
       <p><%= markdown @post.body %></p>
-      <h2><%= @comments.count %> Comments</h2>
-        <%= render partial: 'comments/comment', collection: @comments %>
+   
+      </hr>
+
+      <h2 class='js-comments-count'><%= @comments.count %> Comments</h2>
+        
+      <%= render partial: 'comments/comment', collection: @comments %>
 
       <% if can? :create, Comment %> 
         <hr/>
