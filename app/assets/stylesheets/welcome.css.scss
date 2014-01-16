@@ -1,1 +1,22 @@
 @import "bootstrap";
+
+.hero-unit {
+padding:50px 50px 50px 50px;
+    }
+.form-horizontal .control-label {
+    width: 61px;
+    }
+.form-horizontal .controls {
+margin-left: 80px;
+    }
+/* Landscape phones and down */
+  @media (max-width: 480px) { 
+
+ .hero-unit{
+margin-left:-20px;
+margin-right:-20px;
+  }
+ .form-horizontal .controls {
+margin-left: 0;
+  }
+   }
