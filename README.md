@@ -10,6 +10,8 @@ Skills Learned:
 
 - [ x ] Rspec
 - [ x ] Facebook API
+- [ x ] Faker Gem
+- [ x ] Factory_girl
 - [ x ] AJAX
 - [ x ] Jquery
 - [ x ] Eager Loading
